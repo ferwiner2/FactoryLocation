@@ -34,5 +34,5 @@ GA <- ga(type="real-valued",
          run = 20,
          selection = function(x) gareal_tourSelection(x, k = 2),
          pcrossover = 0,
-         mutation = gareal_gaussianMutation.
+         mutation = gareal_gaussianMutation,
          monitor = function(object) solutions <<- append(solutions, object@population))
