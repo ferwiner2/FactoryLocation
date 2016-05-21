@@ -22,14 +22,18 @@ gareal_gaussianMutation <- function(object, parent, ...) {
   return(mutate)
 }
 
+solutions <- c()
+
 GA <- ga(type="real-valued", 
          fitness = function(x) -fitnessFunction1(x), 
          seed = 0,
          min = c(0,0), 
          max = c(10, 10), 
          popSize = 20, 
-         maxiter = 10000, 
-         run = 5000,
+         maxiter = 100, 
+         run = 20,
+         keepBest = TRUE,
          selection = function(x) gareal_tourSelection(x, k = 2),
          pcrossover = 0,
+         monitor = function(object) solutions <<- append(solutions, object@population),
          mutation = gareal_gaussianMutation)
