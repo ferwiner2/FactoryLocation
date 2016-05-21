@@ -8,6 +8,7 @@ euc.dist <- function(x1, x2) sqrt(sum((x1 - x2) ^ 2))
 processRow <- function(x, y, row) euc.dist(c(row[1], row[2]), c(x,y)) * row[3]
 fitnessFunction1 <- function(x) sum( apply(myData, 1, function(row) processRow(x[1], x[2], row)))
 
+# this is gareal_raMutation with runif changed to rnorm
 gareal_gaussianMutation <- function(object, parent, ...) {
   mutate <- parent <- as.vector(object@population[parent,])
   n <- length(parent)
